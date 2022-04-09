@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Article from "./components/Article/Article"; // Article - может быть и другим названием
+import {Rating} from "./components/Rating/Rating"; // Rating - только такое имя может быть
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <AppTitle/>
+            <Article/>
+
+            <Rating/>
+        </div>
+    );
 }
+
+
+function AppTitle() {
+    return (
+        <h2>
+            This is App component
+        </h2>
+    )
+}
+
 
 export default App;
