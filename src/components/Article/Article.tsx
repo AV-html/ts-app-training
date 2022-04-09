@@ -1,10 +1,10 @@
 import React from "react";
 
-function Article() {
+function Article(props: any) {
     return (
         // <React.Fragment> === <>
         <>
-            <ArticleTitle/>
+            <ArticleTitle title={props.title}/>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fuga ipsa iure laborum nemo nihil numquam
                 pariatur praesentium similique sint. Architecto atque eos esse fugiat ipsum repellendus suscipit voluptatem?
@@ -15,10 +15,10 @@ function Article() {
     );
 }
 
-function ArticleTitle() {
+function ArticleTitle(props: any) {
     return (
         <h2>
-            ArticleTitle
+            {props.title}
         </h2>
     );
 }
