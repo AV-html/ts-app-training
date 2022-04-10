@@ -1,17 +1,19 @@
 import React from 'react';
 import './App.css';
-import Article from "./components/Article/Article"; // Article - может быть и другим названием
+import Accordion from "./components/Accordion/Accordion"; // Accordion - может быть и другим названием
 import {Rating} from "./components/Rating/Rating"; // Rating - только такое имя может быть
 
 
 function App() {
     return (
+        //16 38
         <div>
             <AppTitle/>
             <Rating value={2}/>
 
-            <Article title={"Headline Article"}/>
-            <Rating value={4}/>
+            <Accordion titleValue={"Headline Accordion"} collapsed={true}/>
+            <Accordion titleValue={"Another Headline Accordion 2"} collapsed={false}/>
+            <Rating value={5}/>
         </div>
     );
 }

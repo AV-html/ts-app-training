@@ -1,17 +1,25 @@
 import React from "react";
 
-export function Rating(props: any) {
-    const starProps = [];
+
+type RatingPropsType = {
+    value: 0 | 1 | 2 | 3 | 4 | 5
+}
+type StarPropsType = {
+    selected: boolean
+}
+
+export function Rating(props: RatingPropsType) {
+    const starArray = [];
     for (let i = 1; i <= 5; i++) {
-        starProps.push(i <= props.value ? <Star selected={true}/> : <Star selected={false}/>);
+        starArray.push(i <= props.value ? <Star selected={true}/> : <Star selected={false}/>);
     }
     return (
         <div>
-            {starProps}
+            {starArray}
         </div>
     );
 }
 
-function Star(props: any) {
+function Star(props: StarPropsType) {
     return props.selected ? <b>STAR </b> : <>STAR </>;
 }
