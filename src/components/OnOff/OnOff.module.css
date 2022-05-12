@@ -1,0 +1,21 @@
+.block {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.on {
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
+
+.off {
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
+
+.on.active {
+    background-color: lightgreen;
+}
+.off.active {
+    background-color: lightcoral;
+}

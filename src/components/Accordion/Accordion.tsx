@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 
 // PropsType - если одна компонента
@@ -13,28 +13,25 @@ function Accordion(props: AccordionPropsType) {
         // <React.Fragment> === <>
         <>
             <AccordionTitle title={props.titleValue}/>
-            <AccordionBody collapsed={props.collapsed}/>
+            { !props.collapsed && <AccordionBody/>}
+            {/* Если не свёрнут, то отрисуй */}
         </>
     );
 }
 
 
-type AccordionBodyPropsType = {
-    collapsed: boolean
-}
 
-function AccordionBody(props: AccordionBodyPropsType) {
-    if (props.collapsed) {
-        return null;
-    } else {
-        return (
-            <ul>
-                <li>Potato</li>
-                <li>Carrot</li>
-                <li>Cabbage</li>
-            </ul>
-        );
-    }
+
+function AccordionBody() {
+
+    return (
+        <ul>
+            <li>Potato</li>
+            <li>Carrot</li>
+            <li>Cabbage</li>
+        </ul>
+    );
+
 }
 
 
