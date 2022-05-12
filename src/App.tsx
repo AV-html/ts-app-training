@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import Accordion from "./components/Accordion/Accordion"; // Accordion - может быть и другим названием
+import Accordion from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
-import {OnOff} from './components/OnOff/OnOff'; // Rating - только такое имя может быть
+import {OnOff} from './components/OnOff/OnOff';
+import {UnControlledAccordion} from './components/UnControlledAccordion/UnControlledAccordion';
+import {UnControlledRating} from './components/UnControlledRating/UnControlledRating';
 
 
 function App() {
@@ -12,18 +14,27 @@ function App() {
             <AppTitle/>
 
 
-            <Accordion titleValue={"Headline Accordion"} collapsed={true}/>
-            <Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>
+            {/*<Accordion titleValue={"Headline Accordion"} collapsed={true}/>*/}
+            {/*<Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>*/}
 
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
+            {/*<Rating value={1}/>*/}
+            {/*<Rating value={2}/>*/}
+            {/*<Rating value={3}/>*/}
+            {/*<Rating value={4}/>*/}
+            {/*<Rating value={5}/>*/}
 
-            <OnOff on={false}/>
-            <OnOff on={true}/>
-            <OnOff on={false}/>
+            <OnOff/>
+            <OnOff/>
+
+            <UnControlledAccordion titleValue={"Headline Accordion"}/>
+            <UnControlledAccordion titleValue={"Another Headline Accordion 2"}/>
+
+            <UnControlledRating/>
+            <UnControlledRating/>
+            <UnControlledRating/>
+
+            {/*<OnOff on={true}/>*/}
+            {/*<OnOff on={false}/>*/}
         </div>
     );
 }
