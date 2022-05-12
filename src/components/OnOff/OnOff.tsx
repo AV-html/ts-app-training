@@ -1,18 +1,44 @@
 import React from 'react';
-import o from './OnOff.module.css';
 
 type OnOffPropsType = {
-    checked: boolean
+    on: boolean
 }
 
-export function OnOff(props: OnOffPropsType) {
 
-    // HW props ->> true (green) / false (red)
+export function OnOff(props: OnOffPropsType) {
+    const onStyle= {
+        width: "30px",
+        height: "20px",
+        border: '1px solid #000',
+        display: "inline-block",
+        padding: "5px",
+        backgroundColor: props.on ? 'lightgreen' : 'white'
+    };
+    const offStyle= {
+        width: "30px",
+        height: "20px",
+        border: '1px solid #000',
+        display: "inline-block",
+        marginLeft: '2px',
+        padding: "5px",
+        backgroundColor: !props.on ? 'lightcoral' : 'white'
+
+    };
+    const indicatorStyle = {
+        width: '10px',
+        height: '10px',
+        borderRadius: '15px',
+        border: '1px solid #000',
+        display: "inline-block",
+        marginLeft: '10px',
+        backgroundColor: props.on ? 'lightgreen' : 'lightcoral'
+    };
 
     return (
-        <div className={o.block}>
-            <div className={`${o.on} ${props.checked && o.active}`}>On</div>
-            <div className={`${o.off} ${!props.checked && o.active}`}>Off</div>
+        <div>
+            <div style={onStyle}>On</div>
+            <div style={offStyle}>Off</div>
+            <div style={indicatorStyle}></div>
         </div>
     );
 }

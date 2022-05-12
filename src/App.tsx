@@ -14,14 +14,16 @@ function App() {
 
             <Accordion titleValue={"Headline Accordion"} collapsed={true}/>
             <Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>
+
             <Rating value={1}/>
             <Rating value={2}/>
             <Rating value={3}/>
             <Rating value={4}/>
             <Rating value={5}/>
 
-            <OnOff checked={false}/>
-            <OnOff checked={true}/>
+            <OnOff on={false}/>
+            <OnOff on={true}/>
+            <OnOff on={false}/>
         </div>
     );
 }
