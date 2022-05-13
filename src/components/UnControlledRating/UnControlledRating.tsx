@@ -6,26 +6,33 @@ type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 
 
 export function UnControlledRating() {
-    const [value, setValue] = useState<RatingValueType>(1);
+    const [value, setValue] = useState<RatingValueType>(0);
 
-    const onClickHandler = (newValue: RatingValueType) => {
+
+    const changeRating = (newValue: RatingValueType) => {
         setValue(newValue)
     }
 
     return (
         <div>
-            <Star selected={value > 0}/><button onClick={() => {onClickHandler(1)}}>1</button>
-            <Star selected={value > 1}/><button onClick={() => {onClickHandler(2)}}>2</button>
-            <Star selected={value > 2}/><button onClick={() => {onClickHandler(3)}}>3</button>
-            <Star selected={value > 3}/><button onClick={() => {onClickHandler(4)}}>4</button>
-            <Star selected={value > 4}/><button onClick={() => {onClickHandler(5)}}>5</button>
+            <Star selected={value > 0} changeRating={() => {changeRating(1)}}/>
+            <Star selected={value > 1} changeRating={() => {changeRating(2)}}/>
+            <Star selected={value > 2} changeRating={() => {changeRating(3)}}/>
+            <Star selected={value > 3} changeRating={() => {changeRating(4)}}/>
+            <Star selected={value > 4} changeRating={() => {changeRating(5)}}/>
         </div>
     )
 }
 
 type StarPropsType = {
     selected: boolean
+    changeRating: () => void;
 }
+
 function Star(props: StarPropsType) {
-    return props.selected ? <b>STAR </b> : <>STAR </>;
+    const onClickHandler = () => {
+        props.changeRating();
+    }
+
+    return <span onClick={onClickHandler}>{props.selected ? <b>STAR </b> : "STAR "}</span>;
 }
