@@ -3,6 +3,7 @@ import './App.css';
 import Accordion from './components/Accordion/Accordion';
 import {Rating, RatingValueType} from './components/Rating/Rating';
 import {OnOff} from './components/OnOff/OnOff';
+import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
         setAccordionCollapsed(!accordionCollapsed)
     }
 
-    const [isOn, setIsOn] = useState<boolean>(true);
+    const [isOn, setIsOn] = useState<boolean>(false);
     const toggleOn = (isOn: boolean) => {
         setIsOn(isOn)
     }
@@ -27,7 +28,7 @@ function App() {
             <Accordion titleValue={"Headline Accordion"} collapsed={accordionCollapsed} toggleAccordion={toggleAccordion}/>
             {/*<Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>*/}
             <Rating ratingValue={ratingValue} changeRating={changeRating}/>
-            <OnOff isOn={isOn} toggleOn={toggleOn}/>
+            {/*<OnOff isOn={isOn} toggleOn={toggleOn}/>*/}
 
 
 
@@ -38,7 +39,7 @@ function App() {
             {/*<UncontrolledRating/>*/}
             {/*<UncontrolledRating/>*/}
 
-            {/*<UncontrolledOnOff/>*/}
+            <UncontrolledOnOff setIsOn={setIsOn}/> {isOn.toString()}
             {/*<UncontrolledOnOff on={false}/>*/}
         </div>
     );
