@@ -1,52 +1,49 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Accordion from "./components/Accordion/Accordion";
-import {Rating} from "./components/Rating/Rating";
+import Accordion from './components/Accordion/Accordion';
+import {Rating, RatingValueType} from './components/Rating/Rating';
 import {OnOff} from './components/OnOff/OnOff';
-import {UnControlledAccordion} from './components/UnControlledAccordion/UnControlledAccordion';
-import {UnControlledRating} from './components/UnControlledRating/UnControlledRating';
 
 
 function App() {
+
+    const [ratingValue, setRatingValue] = useState<RatingValueType>(0);
+    const changeRating = (value: RatingValueType) => {
+        setRatingValue(value)
+    }
+
+    const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true);
+    const toggleAccordion = () => {
+        setAccordionCollapsed(!accordionCollapsed)
+    }
+
+    const [isOn, setIsOn] = useState<boolean>(true);
+    const toggleOn = (isOn: boolean) => {
+        setIsOn(isOn)
+    }
+
     return (
-        //16 38
         <div>
-            <AppTitle/>
-
-
-            {/*<Accordion titleValue={"Headline Accordion"} collapsed={true}/>*/}
+            <Accordion titleValue={"Headline Accordion"} collapsed={accordionCollapsed} toggleAccordion={toggleAccordion}/>
             {/*<Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>*/}
+            <Rating ratingValue={ratingValue} changeRating={changeRating}/>
+            <OnOff isOn={isOn} toggleOn={toggleOn}/>
 
-            {/*<Rating value={1}/>*/}
-            {/*<Rating value={2}/>*/}
-            {/*<Rating value={3}/>*/}
-            {/*<Rating value={4}/>*/}
-            {/*<Rating value={5}/>*/}
 
-            <OnOff/>
-            <OnOff/>
 
-            <UnControlledAccordion titleValue={"Headline Accordion"}/>
-            <UnControlledAccordion titleValue={"Another Headline Accordion 2"}/>
+            {/*<UncontrolledAccordion titleValue={"Headline Accordion"}/>*/}
+            {/*<UncontrolledAccordion titleValue={"Another Headline Accordion 2"}/>*/}
 
-            <UnControlledRating/>
-            <UnControlledRating/>
-            <UnControlledRating/>
+            {/*<UncontrolledRating/>*/}
+            {/*<UncontrolledRating/>*/}
+            {/*<UncontrolledRating/>*/}
 
-            {/*<OnOff on={true}/>*/}
-            {/*<OnOff on={false}/>*/}
+            {/*<UncontrolledOnOff/>*/}
+            {/*<UncontrolledOnOff on={false}/>*/}
         </div>
     );
 }
 
-
-function AppTitle() {
-    return (
-        <h2>
-            This is App component
-        </h2>
-    )
-}
 
 
 export default App;

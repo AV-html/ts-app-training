@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
+import {RatingValueType} from '../Rating/Rating';
 
 
-type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
-
-
-
-export function UnControlledRating() {
+export function UncontrolledRating() {
     const [value, setValue] = useState<RatingValueType>(0);
 
 
@@ -34,5 +31,5 @@ function Star(props: StarPropsType) {
         props.changeRating();
     }
 
-    return <span onClick={onClickHandler}>{props.selected ? <b>STAR </b> : "STAR "}</span>;
+    return <span onClick={onClickHandler}>{props.selected ? "★" : "☆"}</span>;
 }

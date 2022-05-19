@@ -1,26 +1,20 @@
 import React from 'react';
 
 
-// PropsType - если одна компонента
-// ArticlePropsType - если в файле более одной компоненты
 type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
+    toggleAccordion: () => void
 }
 
 function Accordion(props: AccordionPropsType) {
     return (
-        // <React.Fragment> === <>
         <>
-            <AccordionTitle title={props.titleValue}/>
+            <AccordionTitle title={props.titleValue} toggleAccordion={props.toggleAccordion}/>
             { !props.collapsed && <AccordionBody/>}
-            {/* Если не свёрнут, то отрисуй */}
         </>
     );
 }
-
-
-
 
 function AccordionBody() {
 
@@ -34,14 +28,14 @@ function AccordionBody() {
 
 }
 
-
 type ArticleTitlePropsType = {
     title: string
+    toggleAccordion: () => void
 }
 
 function AccordionTitle(props: ArticleTitlePropsType) {
     return (
-        <h2>
+        <h2 onClick={props.toggleAccordion}>
             === {props.title} ===
         </h2>
     );

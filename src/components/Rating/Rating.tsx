@@ -1,15 +1,14 @@
-import React from "react";
+import React from 'react';
 
 
+export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
-}
-type StarPropsType = {
-    selected: boolean
+    ratingValue: RatingValueType
+    changeRating: (value: RatingValueType) => void
 }
 
 export function Rating(props: RatingPropsType) {
-    const starArray = [];
+    // const starArray = [];
     // for (let i = 1; i <= 5; i++) {
     //     starArray.push(i <= props.value ? <Star selected={true}/> : <Star selected={false}/>);
     // }
@@ -22,15 +21,23 @@ export function Rating(props: RatingPropsType) {
 
     return (
         <div>
-            <Star selected={props.value > 0}/>
-            <Star selected={props.value > 1}/>
-            <Star selected={props.value > 2}/>
-            <Star selected={props.value > 3}/>
-            <Star selected={props.value > 4}/>
+            <Star selected={props.ratingValue > 0} changeRating={() => {props.changeRating(1)}}/>
+            <Star selected={props.ratingValue > 1} changeRating={() => {props.changeRating(2)}}/>
+            <Star selected={props.ratingValue > 2} changeRating={() => {props.changeRating(3)}}/>
+            <Star selected={props.ratingValue > 3} changeRating={() => {props.changeRating(4)}}/>
+            <Star selected={props.ratingValue > 4} changeRating={() => {props.changeRating(5)}}/>
         </div>
     )
 }
 
+type StarPropsType = {
+    selected: boolean
+    changeRating: () => void
+}
 function Star(props: StarPropsType) {
-    return props.selected ? <b>STAR </b> : <>STAR </>;
+    const onClickHandler = () => {
+        props.changeRating();
+    }
+
+    return <span onClick={onClickHandler}>{props.selected ? "★" : "☆"}</span>;
 }
