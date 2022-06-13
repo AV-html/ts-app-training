@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 
 
 type UncontrolledOnOffPropsType = {
-    setIsOn: (isOn: boolean) => void
+    defaultValue: boolean
 }
 export function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
 
     // let on = false;
-    const [on, setOn] = useState<boolean>(false);
+    const [on, setOn] = useState<boolean>(props.defaultValue);
 
     const onStyle = {
         width: '30px',
@@ -39,11 +39,9 @@ export function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
 
     const onClicked = () => {
         setOn(true)
-        props.setIsOn(true)
     }
     const offClicked = () => {
         setOn(false)
-        props.setIsOn(false)
     }
 
     return (
