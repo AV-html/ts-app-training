@@ -14,7 +14,8 @@ export function OnOff(props: OnOffPropsType) {
         border: '1px solid #000',
         display: "inline-block",
         padding: "5px",
-        backgroundColor: props.isOn ? 'lightgreen' : 'white'
+        backgroundColor: props.isOn ? 'lightgreen' : 'white',
+        cursor: "pointer"
     };
     const offStyle= {
         width: "30px",
@@ -23,8 +24,8 @@ export function OnOff(props: OnOffPropsType) {
         display: "inline-block",
         marginLeft: '2px',
         padding: "5px",
-        backgroundColor: !props.isOn ? 'lightcoral' : 'white'
-
+        backgroundColor: !props.isOn ? 'lightcoral' : 'white',
+        cursor: "pointer"
     };
     const indicatorStyle = {
         width: '10px',
