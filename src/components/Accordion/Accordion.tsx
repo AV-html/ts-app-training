@@ -4,6 +4,9 @@ import React from 'react';
 type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
+    /**
+     * Comment v (ctrl q)
+     */
     toggleAccordion: () => void
 }
 

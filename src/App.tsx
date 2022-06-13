@@ -28,18 +28,17 @@ function App() {
             <Accordion titleValue={"Headline Accordion"} collapsed={accordionCollapsed} toggleAccordion={toggleAccordion}/>
             {/*<Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>*/}
             <Rating ratingValue={ratingValue} changeRating={changeRating}/>
-            {/*<OnOff isOn={isOn} toggleOn={toggleOn}/>*/}
+            <OnOff isOn={isOn} toggleOn={toggleOn}/>
 
 
 
             {/*<UncontrolledAccordion titleValue={"Headline Accordion"}/>*/}
             {/*<UncontrolledAccordion titleValue={"Another Headline Accordion 2"}/>*/}
 
-            {/*<UncontrolledRating/>*/}
-            {/*<UncontrolledRating/>*/}
-            {/*<UncontrolledRating/>*/}
+            {/*<UncontrolledRating defaultValue={3}/>*/}
 
-            <UncontrolledOnOff setIsOn={setIsOn}/> {isOn.toString()}
+
+            <UncontrolledOnOff defaultValue={true}/>
             {/*<UncontrolledOnOff on={false}/>*/}
         </div>
     );
