@@ -25,7 +25,13 @@ function App() {
 
     return (
         <div>
-            <Accordion titleValue={"Headline Accordion"} collapsed={accordionCollapsed} toggleAccordion={toggleAccordion}/>
+            <Accordion titleValue={"Headline Accordion"}
+                       collapsed={accordionCollapsed}
+                       toggleAccordion={toggleAccordion}
+                       items={[{title: 'apple', value: 1}, {title: 'carrot', value: 2}, {title: 'potato', value: 3}]}
+                       onItemClick={ (i) => {
+                           console.log(i)}}
+            />
             {/*<Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>*/}
             <Rating ratingValue={ratingValue} changeRating={changeRating}/>
             <OnOff isOn={isOn} toggleOn={toggleOn}/>

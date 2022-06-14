@@ -16,11 +16,18 @@ export const UsersMode = Template.bind({});
 UsersMode.args = {
     collapsed: true,
     titleValue: 'menu',
-    toggleAccordion: callback
+    toggleAccordion: callback,
+    items: [{title: 'apple', value: 1}, {title: 'carrot', value: 2}, {title: 'potato', value: 3}],
+    onItemClick: action('some item was clicked')
 };
 
 export const CollapsedMode = () => {
-    return <Accordion titleValue={'menu'} collapsed={true} toggleAccordion={callback}/>
+    return <Accordion titleValue={'menu'}
+                      collapsed={true}
+                      toggleAccordion={callback}
+                      items={[{title: 'apple', value: 1}, {title: 'carrot', value: 2}, {title: 'potato', value: 3}]}
+                      onItemClick={action('some item was clicked')}
+    />
 }
 // export const CollapsedMode = Template.bind({});
 // CollapsedMode.args = {
@@ -30,7 +37,12 @@ export const CollapsedMode = () => {
 // };
 
 export const UnCollapsedMode = () => {
-    return <Accordion titleValue={'menu'} collapsed={false} toggleAccordion={callback}/>
+    return <Accordion titleValue={'menu'}
+                      collapsed={false}
+                      toggleAccordion={callback}
+                      items={[{title: 'apple', value: 1}, {title: 'carrot', value: 2}, {title: 'potato', value: 3}]}
+                      onItemClick={action('some item was clicked')}
+    />
 }
 // export const UnCollapsedMode = Template.bind({});
 // UnCollapsedMode.args = {
@@ -51,7 +63,9 @@ export const Demonstration: ComponentStory<typeof Accordion> = (args) => {
 Demonstration.args = {
     collapsed: true,
     titleValue: 'menu',
-    toggleAccordion: callback
+    toggleAccordion: callback,
+    items: [{title: 'apple', value: 1}, {title: 'carrot', value: 2}, {title: 'potato', value: 3}],
+    onItemClick: action('some item was clicked')
 }
 
 

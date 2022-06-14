@@ -1,6 +1,11 @@
 import React from 'react';
 
 
+type ItemsType = {
+    title: string
+    value: any
+}
+
 type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
@@ -8,27 +13,34 @@ type AccordionPropsType = {
      * Comment v (ctrl q)
      */
     toggleAccordion: () => void
+    items: Array<ItemsType>
+    onItemClick: (value: any) => void
 }
 
 function Accordion(props: AccordionPropsType) {
     return (
         <>
             <AccordionTitle title={props.titleValue} toggleAccordion={props.toggleAccordion}/>
-            { !props.collapsed && <AccordionBody/>}
+            { !props.collapsed && <AccordionBody items={props.items} onItemClick={props.onItemClick}/>}
         </>
     );
 }
 
-function AccordionBody() {
 
+
+type AccordionBodyPropsType = {
+    items: Array<ItemsType>
+    onItemClick: (value: any) => void
+}
+
+function AccordionBody(props: AccordionBodyPropsType) {
     return (
         <ul>
-            <li>Potato</li>
-            <li>Carrot</li>
-            <li>Cabbage</li>
+            {props.items.map((item, index) => {
+                return <li key={index} onClick={() => { props.onItemClick(item.value)}}>{item.title}</li>
+            })}
         </ul>
     );
-
 }
 
 type ArticleTitlePropsType = {
