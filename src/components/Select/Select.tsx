@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from './Select.module.css'
 
 
 type ItemType = {
@@ -16,35 +17,47 @@ export function Select(props: PropsType) {
 
     const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
-    const onCollapsed = () => {
-        setIsCollapsed(false)
+
+    const changeCollapse = () => {
+        setIsCollapsed(!isCollapsed)
     }
-    const offCollapsed = () => {
-        setIsCollapsed(true)
-    }
+
 
     const currentSelect = props.items.find((item) => item.value === props.value)
     const selectTitle = currentSelect ? currentSelect.title : 'none';
 
 
     return (
-        <div>
-            <div onClick={onCollapsed}>{selectTitle}</div>
+        <div className={styles.select}>
+
+            <div className={styles['wrap-title']}>
+                <input className={styles.title}
+                       onClick={changeCollapse}
+                       value={selectTitle}
+                       readOnly={true}
+                />
+            </div>
+
 
             {
-                isCollapsed ?
-                    null :
-                    <ul>
+                !isCollapsed && (
+                    <ul className={styles.list}>
                         {props.items.map((item) => {
                             const onClickHandler = () => {
                                 props.callback(item.value)
-                                offCollapsed()
+                                changeCollapse()
                             }
                             return (
-                                <li onClick={onClickHandler}>{item.title}</li>
+                                <li key={item.value}
+                                    onClick={onClickHandler}
+                                    className={item === currentSelect ? styles.selected : ''}
+                                >
+                                    {item.title}
+                                </li>
                             )
                         })}
                     </ul>
+                )
             }
         </div>
     );
