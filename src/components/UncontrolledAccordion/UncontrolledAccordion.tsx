@@ -6,6 +6,7 @@ type UnControlledAccordionPropsType = {
 }
 
 export function UncontrolledAccordion(props: UnControlledAccordionPropsType) {
+
     const [collapsed, setCollapsed] = useState(true);
 
     const collapsedToggle = () => {
