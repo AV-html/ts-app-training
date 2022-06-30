@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 
 
 export default {
@@ -59,6 +59,7 @@ const UsersSecret = (props: { users: Array<string> }) => {
 }
 const Users = React.memo(UsersSecret);
 
+
 export const ExampleHelpsReactMemo = () => {
     console.log('EXAMPLE render');
 
@@ -85,4 +86,69 @@ export const ExampleHelpsReactMemo = () => {
         </>
     )
 }
+
+
+
+
+
+
+
+const BooksSecret = (props: {books: Array<string>, addBook: () => void}) => {
+    console.log('books render');
+    const books = props.books.map((book, i) => {
+        return <div key={i}>
+            {book}
+        </div>
+    })
+    return (
+        <div>
+            <button onClick={() => props.addBook()}>add book</button>
+            {books}
+        </div>
+    )
+}
+const Books = React.memo(BooksSecret)
+
+// Решаем проблему useCallback с помощью useMemo
+export const LikeUseCallback = () => {
+    console.log('LikeUseCallback');
+
+    const [counter, setCounter] = useState(0);
+    const [books, setBooks] = useState(['React', 'js', 'css', 'html']);
+
+    // Получает всегда новый массив, значит ссылка меняется!
+    // const newBooksArray = books.filter(u => u.toLowerCase().indexOf('a') > -1);
+    // Исправляем:
+    // const newBooksArray = useMemo(() => {
+    //     return books.filter(u => u.toLowerCase().indexOf('a') > -1);
+    // }, [books])
+
+
+    // Теперь передаём функцию-коллбэк, т.к. она объект, её тоже нужно запомнить
+
+
+    // const addBook = () => {
+    //     setBooks([...books, 'Angular'])
+    // }
+    // const memoizedAddBook = useMemo(() => addBook, [books])
+
+    const memoizedAddBook = useCallback(() => {
+        setBooks([...books, 'Angular'])
+    }, [books])
+
+    return (
+        <>
+            <button onClick={() => setCounter(counter + 1)}>+</button>
+            {counter}
+
+            {/* Будет вызываться только, если массив изменён books */}
+            <Books books={books} addBook={memoizedAddBook}/>
+        </>
+    )
+}
+
+
+
+
+
 
