@@ -18,9 +18,12 @@ type AccordionPropsType = {
 }
 
 function Accordion(props: AccordionPropsType) {
+
     return (
         <>
-            <AccordionTitle title={props.titleValue} toggleAccordion={props.toggleAccordion}/>
+            <AccordionTitle title={props.titleValue}
+                            toggleAccordion={props.toggleAccordion}
+            />
             { !props.collapsed && <AccordionBody items={props.items} onItemClick={props.onItemClick}/>}
         </>
     );

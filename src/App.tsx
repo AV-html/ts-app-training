@@ -4,6 +4,8 @@ import Accordion from './components/Accordion/Accordion';
 import {Rating, RatingValueType} from './components/Rating/Rating';
 import {OnOff} from './components/OnOff/OnOff';
 import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
+import {UncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
+import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
 
 
 function App() {
@@ -28,23 +30,28 @@ function App() {
             <Accordion titleValue={"Headline Accordion"}
                        collapsed={accordionCollapsed}
                        toggleAccordion={toggleAccordion}
+
+
                        items={[{title: 'apple', value: 1}, {title: 'carrot', value: 2}, {title: 'potato', value: 3}]}
                        onItemClick={ (i) => {
                            console.log(i)}}
             />
+
+
             {/*<Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>*/}
             <Rating ratingValue={ratingValue} changeRating={changeRating}/>
-            <OnOff isOn={isOn} toggleOn={toggleOn}/>
+            {/*<OnOff isOn={isOn} toggleOn={toggleOn}/>*/}
 
 
 
             {/*<UncontrolledAccordion titleValue={"Headline Accordion"}/>*/}
             {/*<UncontrolledAccordion titleValue={"Another Headline Accordion 2"}/>*/}
 
-            {/*<UncontrolledRating defaultValue={3}/>*/}
+
+            <UncontrolledRating defaultValue={ratingValue}/>
 
 
-            <UncontrolledOnOff defaultValue={true}/>
+            {/*<UncontrolledOnOff defaultValue={true}/>*/}
             {/*<UncontrolledOnOff on={false}/>*/}
         </div>
     );

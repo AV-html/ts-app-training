@@ -23,7 +23,6 @@ export function UncontrolledAccordion(props: UnControlledAccordionPropsType) {
 
 
 function AccordionBody() {
-
     return (
         <ul>
             <li>Potato</li>
