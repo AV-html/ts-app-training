@@ -75,25 +75,6 @@ export const SetTimoutExample = () => {
     )
 }
 
-export const Clock = () => {
-    console.log('ExampleUseState1');
-
-    const [clock, setClock] = useState(new Date());
-
-    useEffect(() => {
-        setInterval(() => {
-            setClock((clock) => new Date(clock.getTime() + 1000))
-        }, 1000)
-    }, [])
-
-
-    return (
-        <>
-            <div>Clock: {clock.toLocaleTimeString()}</div>
-        </>
-    )
-}
-
 
 
 

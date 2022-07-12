@@ -2,10 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import Accordion from './components/Accordion/Accordion';
 import {Rating, RatingValueType} from './components/Rating/Rating';
-import {OnOff} from './components/OnOff/OnOff';
-import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
-import {UncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
 import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
+import {OnOff} from './components/OnOff/OnOff';
 
 
 function App() {
@@ -40,7 +38,7 @@ function App() {
 
             {/*<Accordion titleValue={"Another Headline Accordion 2"} collapsed={true}/>*/}
             <Rating ratingValue={ratingValue} changeRating={changeRating}/>
-            {/*<OnOff isOn={isOn} toggleOn={toggleOn}/>*/}
+            <OnOff isOn={isOn} toggleOn={toggleOn}/>
 
 
 
