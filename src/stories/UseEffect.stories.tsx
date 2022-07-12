@@ -6,8 +6,7 @@ export default {
 }
 
 
-
-export const ExampleUseEffect = () => {
+export const SimpleExample = () => {
     console.log('ExampleUseState1');
 
 
@@ -35,8 +34,41 @@ export const ExampleUseEffect = () => {
     return (
         <>
 
-            <button onClick={ () => setCounter(counter + 1)}>counter+</button>
-            <button onClick={ () => setFake(fake + 1)}>fake+</button>
+            <button onClick={() => setCounter(counter + 1)}>counter+</button>
+            <button onClick={() => setFake(fake + 1)}>fake+</button>
+            <div>Counter {counter}</div>
+            <div>Fake {fake}</div>
+        </>
+    )
+}
+
+export const SetTimoutExample = () => {
+    console.log('ExampleUseState1');
+
+
+    const [counter, setCounter] = useState(1);
+    const [fake, setFake] = useState(1);
+
+    useEffect(() => {
+        // setTimeout(() => {
+        //     // В компоненте вызовется много раз
+        //     document.title = counter.toString()
+        // }, 2000)
+
+        setInterval(() => {
+            // counter замкнут
+            // console.log('tick' + counter);
+            // setCounter(counter + 1)
+            setCounter((state) => state + 1)
+        }, 1000)
+    }, [])
+
+
+    return (
+        <>
+
+            <button onClick={() => setCounter(counter + 1)}>counter+</button>
+            <button onClick={() => setFake(fake + 1)}>fake+</button>
             <div>Counter {counter}</div>
             <div>Fake {fake}</div>
         </>
