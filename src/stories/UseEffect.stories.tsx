@@ -76,6 +76,78 @@ export const SetTimoutExample = () => {
 }
 
 
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(1)
+
+    console.log('Component rendered');
+
+    useEffect(() => {
+        console.log('Effect occurred');
+
+        return () => {
+            // Как только изменю counter перед срабатыванием callback в useEffect сработает cleanup callback
+            // counter - имеет ещё старое значение
+            console.log('RESET EFFECT', counter);
+
+            // 1. Сбросить интервал
+            // 2. Сделали запрос на сервер, ушли, значит запрос оборвать
+            // 3. Прослушка на scroll, click и т.д.
+            // 4. ws
+        }
+    }, [counter])
+
+    const increase = () => setCounter(counter + 1)
+
+    return <div>
+        <span>
+            Hello, counter: {counter}
+        </span>
+        <button onClick={increase}>
+            Add
+        </button>
+    </div>
+}
+
+
+export const KeysTrackerExample = () => {
+    const [text, setText] = useState('')
+
+    console.log('Component rendered with ' + text);
+
+    // 1 вариант
+    // useEffect(() => {
+    //     const handler = (e: KeyboardEvent) => {
+    //         console.log(e.key);
+    //         setText((textState) => textState + e.key)
+    //     }
+    //     document.addEventListener('keypress', handler)
+    //     return () => {
+    //         document.removeEventListener('keypress', handler)
+    //     }
+    // }, [])
+
+
+    // 2 вариант
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key);
+            setText(text + e.key)
+        }
+        document.addEventListener('keypress', handler)
+        return () => {
+            // сработает при каждом изменении text
+            // componentWillUnmount
+            document.removeEventListener('keypress', handler)
+        }
+    }, [text])
+
+
+    return <>
+        Typed text: {text}
+    </>
+}
+
+
 
 
 
